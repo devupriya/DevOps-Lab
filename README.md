@@ -51,3 +51,75 @@ Run it on your EC2
 ```
 ./install_nginx.sh
 ```
+# Day 3 – S3 Static Website
+
+## What I did:
+- Created a static HTML page
+  ```
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My S3 Hosted Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #0073e6;
+            color: white;
+            padding: 1rem 0;
+        }
+        main {
+            padding: 2rem;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to My S3 Hosted Website</h1>
+    </header>
+    <main>
+        <p>This is a simple static website hosted on an Amazon S3 bucket.</p>
+        <p>Feel free to customize this page as needed!</p>
+    </main>
+    <footer>
+        <p>&copy; 2023 My Website</p>
+    </footer>
+</body>
+</html>
+  ```
+- Hosted it using AWS S3
+- Configured bucket permissions and policies
+  ```
+  {
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "PublicReadGetObject",
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::your-bucket-name/*"
+    }
+  ]
+}
+```
+```
+- Made the site publicly accessible
+
+
+
